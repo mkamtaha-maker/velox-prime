@@ -1,60 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $('On form submission').item.json['Company Name:'] }}</title>
+    <title>Velox Prime | Autonomous Fleet Logistics & AI Warehousing</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            scroll-behavior: smooth;
-        }
-        [lang="ar"] {
-            font-family: 'Tajawal', sans-serif;
-        }
-        [lang="en"] {
-            font-family: 'Inter', sans-serif;
-        }
-        .lang-ar {
-            display: none;
-        }
-        [lang="ar"] .lang-ar {
-            display: block;
-        }
-        [lang="ar"] .lang-en {
-            display: none;
-        }
-        .transition-all {
-            transition: all 0.3s ease-in-out;
-        }
+        :root { font-family: 'Inter', sans-serif; }
+        [lang="ar"] { font-family: 'Tajawal', sans-serif; }
+        .hidden { display: none; }
+        .transition-all { transition: all 0.3s ease-in-out; }
     </style>
 </head>
-<body class="bg-white text-slate-900">
+<body class="bg-slate-950 text-slate-200 antialiased">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-slate-900/90 backdrop-blur-md text-white border-b border-slate-800">
+    <nav class="fixed w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center gap-3">
-                    <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                <div class="flex items-center gap-2">
+                    <svg class="h-10 w-10 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                     </svg>
-                    <span class="text-xl font-bold tracking-tight">{{ $('On form submission').item.json['Company Name:'] }}</span>
+                    <span class="text-2xl font-bold text-white tracking-tight">Velox Prime</span>
                 </div>
                 
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="lang-en hover:text-blue-600 transition-all">About</a>
-                    <a href="#about" class="lang-ar hover:text-blue-600 transition-all">حول</a>
-                    <a href="#services" class="lang-en hover:text-blue-600 transition-all">Services</a>
-                    <a href="#services" class="lang-ar hover:text-blue-600 transition-all">خدماتنا</a>
-                    <a href="#contact" class="lang-en hover:text-blue-600 transition-all">Contact</a>
-                    <a href="#contact" class="lang-ar hover:text-blue-600 transition-all">اتصل بنا</a>
+                <div class="hidden md:flex space-x-8 rtl:space-x-reverse items-center">
+                    <a href="#services" class="hover:text-blue-500 transition-colors lang-en">Services</a>
+                    <a href="#services" class="hover:text-blue-500 transition-colors lang-ar hidden">خدماتنا</a>
+                    <a href="#about" class="hover:text-blue-500 transition-colors lang-en">About</a>
+                    <a href="#about" class="hover:text-blue-500 transition-colors lang-ar hidden">من نحن</a>
+                    <a href="#contact" class="hover:text-blue-500 transition-colors lang-en">Contact</a>
+                    <a href="#contact" class="hover:text-blue-500 transition-colors lang-ar hidden">اتصل بنا</a>
                     
-                    <button onclick="toggleLanguage()" class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-all font-medium">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5c-1.183 4.507-4.102 8.484-8.513 10.5"></path></svg>
+                    <button onclick="toggleLanguage()" class="ml-4 px-4 py-1.5 border border-blue-600 rounded-full text-blue-500 hover:bg-blue-600 hover:text-white transition-all text-sm font-semibold">
                         <span class="lang-en">العربية</span>
-                        <span class="lang-ar">English</span>
+                        <span class="lang-ar hidden">English</span>
                     </button>
                 </div>
             </div>
@@ -62,154 +46,183 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-900">
-        <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-900 to-blue-900/50"></div>
-            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10">
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-[120px]"></div>
         </div>
-
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-4xl mx-auto">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
-                    <span class="lang-en">Elevating Excellence with {{ $('On form submission').item.json['Company Name:'] }}</span>
-                    <span class="lang-ar">الارتقاء بالتميز مع {{ $('On form submission').item.json['Company Name:'] }}</span>
-                </h1>
-                <p class="text-xl text-slate-300 mb-10 leading-relaxed">
-                    <span class="lang-en">Specialized in {{ $('On form submission').item.json['Activity:'] }}. We deliver innovation and quality in every project we undertake.</span>
-                    <span class="lang-ar">متخصصون في {{ $('On form submission').item.json['Activity:'] }}. نحن نقدم الابتكار والجودة في كل مشروع نقوم به.</span>
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="#contact" class="px-8 py-4 bg-blue-600 text-white rounded-xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-900/20">
-                        <span class="lang-en">Get Started</span>
-                        <span class="lang-ar">ابدأ الآن</span>
-                    </a>
-                    <a href="#services" class="px-8 py-4 bg-slate-800 text-white rounded-xl font-bold text-lg hover:bg-slate-700 transition-all border border-slate-700">
-                        <span class="lang-en">Our Services</span>
-                        <span class="lang-ar">خدماتنا</span>
-                    </a>
-                </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl lg:text-7xl font-extrabold text-white mb-6 leading-tight">
+                <span class="lang-en">The Future of <span class="text-blue-600">Autonomous</span> Logistics</span>
+                <span class="lang-ar hidden">مستقبل اللوجستيات <span class="text-blue-600">الذكية</span> والمستقلة</span>
+            </h1>
+            <p class="text-xl text-slate-400 max-w-2xl mx-auto mb-10">
+                <span class="lang-en">Autonomous fleet logistics and smart AI warehousing solutions designed for global scale and precision.</span>
+                <span class="lang-ar hidden">حلول أساطيل النقل ذاتية القيادة والمستودعات الذكية المدعومة بالذكاء الاصطناعي، المصممة للتوسع العالمي والدقة المتناهية.</span>
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold text-lg shadow-lg shadow-blue-900/20 transition-all">
+                    <span class="lang-en">Get Started</span>
+                    <span class="lang-ar hidden">ابدأ الآن</span>
+                </a>
+                <a href="#services" class="px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-bold text-lg transition-all">
+                    <span class="lang-en">View Solutions</span>
+                    <span class="lang-ar hidden">عرض الحلول</span>
+                </a>
             </div>
         </div>
-    </header>
+    </section>
 
-    <!-- Features Section -->
-    <section id="services" class="py-24 bg-slate-50">
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-slate-900/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">
-                    <span class="lang-en">Our Core Business</span>
-                    <span class="lang-ar">نشاطنا الأساسي</span>
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">
+                    <span class="lang-en">Our Core Expertise</span>
+                    <span class="lang-ar hidden">خبراتنا الأساسية</span>
                 </h2>
-                <div class="h-1.5 w-20 bg-blue-600 mx-auto rounded-full"></div>
+                <div class="h-1.5 w-24 bg-blue-600 mx-auto rounded-full"></div>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl transition-all group">
-                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="p-8 bg-slate-800/50 border border-slate-700 rounded-2xl hover:border-blue-500 transition-all group">
+                    <div class="w-14 h-14 bg-blue-600/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-all">
+                        <svg class="w-8 h-8 text-blue-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-slate-900">
-                        <span class="lang-en">Professional Execution</span>
-                        <span class="lang-ar">تنفيذ احترافي</span>
+                    <h3 class="text-xl font-bold text-white mb-4">
+                        <span class="lang-en">Autonomous Fleet</span>
+                        <span class="lang-ar hidden">أساطيل ذاتية القيادة</span>
                     </h3>
-                    <p class="text-slate-600">
-                        <span class="lang-en">High-quality delivery of {{ $('On form submission').item.json['Activity:'] }} services tailored to your needs.</span>
-                        <span class="lang-ar">تقديم عالي الجودة لخدمات {{ $('On form submission').item.json['Activity:'] }} المصممة خصيصًا لتلبية احتياجاتك.</span>
+                    <p class="text-slate-400">
+                        <span class="lang-en">Self-driving technology integrated into logistics for 24/7 operations without human intervention.</span>
+                        <span class="lang-ar hidden">تقنية القيادة الذاتية المدمجة في العمليات اللوجستية للعمل على مدار الساعة دون تدخل بشري.</span>
                     </p>
                 </div>
 
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl transition-all group">
-                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <!-- Card 2 -->
+                <div class="p-8 bg-slate-800/50 border border-slate-700 rounded-2xl hover:border-blue-500 transition-all group">
+                    <div class="w-14 h-14 bg-blue-600/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-all">
+                        <svg class="w-8 h-8 text-blue-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04zM12 22a9 9 0 100-18 9 9 0 000 18z"></path></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-slate-900">
-                        <span class="lang-en">Innovative Solutions</span>
-                        <span class="lang-ar">حلول مبتكرة</span>
+                    <h3 class="text-xl font-bold text-white mb-4">
+                        <span class="lang-en">Smart AI Warehousing</span>
+                        <span class="lang-ar hidden">مستودعات الذكاء الاصطناعي</span>
                     </h3>
-                    <p class="text-slate-600">
-                        <span class="lang-en">Leveraging modern tools to solve complex challenges in {{ $('On form submission').item.json['Activity:'] }}.</span>
-                        <span class="lang-ar">الاستفادة من الأدوات الحديثة لحل التحديات المعقدة في {{ $('On form submission').item.json['Activity:'] }}.</span>
+                    <p class="text-slate-400">
+                        <span class="lang-en">AI-driven inventory management that predicts demand and optimizes storage space automatically.</span>
+                        <span class="lang-ar hidden">إدارة المخزون المعتمدة على الذكاء الاصطناعي التي تتنبأ بالطلب وتحسن مساحات التخزين تلقائياً.</span>
                     </p>
                 </div>
 
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl transition-all group">
-                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                <!-- Card 3 -->
+                <div class="p-8 bg-slate-800/50 border border-slate-700 rounded-2xl hover:border-blue-500 transition-all group">
+                    <div class="w-14 h-14 bg-blue-600/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-all">
+                        <svg class="w-8 h-8 text-blue-500 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-slate-900">
-                        <span class="lang-en">Client Centric</span>
-                        <span class="lang-ar">التركيز على العميل</span>
+                    <h3 class="text-xl font-bold text-white mb-4">
+                        <span class="lang-en">Real-time Analytics</span>
+                        <span class="lang-ar hidden">تحليلات الوقت الفعلي</span>
                     </h3>
-                    <p class="text-slate-600">
-                        <span class="lang-en">We prioritize your business goals to ensure maximum ROI and long-term success.</span>
-                        <span class="lang-ar">نحن نعطي الأولوية لأهداف عملك لضمان أقصى عائد على الاستثمار والنجاح على المدى الطويل.</span>
+                    <p class="text-slate-400">
+                        <span class="lang-en">Live data visualization for every package and vehicle in your global supply chain network.</span>
+                        <span class="lang-ar hidden">تصوير البيانات الحية لكل طرد ومركبة في شبكة سلسلة التوريد العالمية الخاصة بك.</span>
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2">
+                    <div class="relative">
+                        <div class="absolute -top-4 -left-4 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl"></div>
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=2000" alt="Warehouse" class="relative rounded-2xl shadow-2xl border border-slate-800">
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6">
+                        <span class="lang-en">Why Velox Prime?</span>
+                        <span class="lang-ar hidden">لماذا فيلوكس برايم؟</span>
+                    </h2>
+                    <p class="text-lg text-slate-400 mb-8">
+                        <span class="lang-en">At Velox Prime, we bridge the gap between heavy industry and cutting-edge software. Our mission is to eliminate inefficiency in autonomous fleet logistics and smart AI warehousing through rigorous engineering and innovative AI implementation.</span>
+                        <span class="lang-ar hidden">في فيلوكس برايم، نجمع بين الصناعات الثقيلة وأحدث البرمجيات. مهمتنا هي القضاء على عدم الكفاءة في العمليات اللوجستية والمستودعات الذكية من خلال الهندسة الدقيقة والابتكار في مجال الذكاء الاصطناعي.</span>
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3">
+                            <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs">✓</div>
+                            <span class="lang-en text-slate-300">99.9% Operational Uptime</span>
+                            <span class="lang-ar hidden text-slate-300">جودة تشغيل بنسبة 99.9%</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs">✓</div>
+                            <span class="lang-en text-slate-300">Advanced AI Route Optimization</span>
+                            <span class="lang-ar hidden text-slate-300">تحسين المسارات المتقدم بالذكاء الاصطناعي</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-white">
+    <section id="contact" class="py-24 bg-slate-900/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-slate-900 rounded-3xl overflow-hidden shadow-2xl">
-                <div class="grid lg:grid-cols-2">
-                    <div class="p-12 lg:p-16">
-                        <h2 class="text-3xl font-bold text-white mb-6">
-                            <span class="lang-en">Ready to Collaborate?</span>
-                            <span class="lang-ar">هل أنت جاهز للتعاون؟</span>
-                        </h2>
-                        <p class="text-slate-400 mb-8 text-lg">
-                            <span class="lang-en">Contact us today to discuss how we can help you achieve your objectives with our expertise.</span>
-                            <span class="lang-ar">اتصل بنا اليوم لمناقشة كيف يمكننا مساعدتك في تحقيق أهدافك من خلال خبرتنا.</span>
-                        </p>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-4 text-white">
-                                <div class="w-12 h-12 bg-blue-600/20 rounded-full flex items-center justify-center text-blue-500">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-slate-400">Email / البريد الإلكتروني</p>
-                                    <p class="text-lg font-semibold">{{ $('On form submission').item.json['Contacts:'] }}</p>
-                                </div>
+            <div class="bg-slate-800 border border-slate-700 rounded-3xl p-8 lg:p-16 flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <h2 class="text-4xl font-bold text-white mb-6">
+                        <span class="lang-en">Connect With Us</span>
+                        <span class="lang-ar hidden">تواصل معنا</span>
+                    </h2>
+                    <p class="text-slate-400 mb-8">
+                        <span class="lang-en">Ready to automate your supply chain? Reach out to Velox Prime today for a custom consultation.</span>
+                        <span class="lang-ar hidden">جاهز لأتمتة سلسلة التوريد الخاصة بك؟ تواصل مع فيلوكس برايم اليوم للحصول على استشارة مخصصة.</span>
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-slate-700 rounded-xl flex items-center justify-center text-blue-500">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-sm text-slate-500 uppercase font-bold tracking-widest">Email</p>
+                                <p class="text-white text-lg">Velox Prime Office</p>
                             </div>
                         </div>
                     </div>
-                    <div class="bg-blue-600 p-12 lg:p-16 flex items-center justify-center">
-                        <div class="text-center text-white">
-                            <h3 class="text-4xl font-bold mb-4">
-                                <span class="lang-en">Contact Us</span>
-                                <span class="lang-ar">تواصل معنا</span>
-                            </h3>
-                            <p class="text-blue-100 mb-8">
-                                <span class="lang-en">We respond within 24 hours</span>
-                                <span class="lang-ar">نرد خلال 24 ساعة</span>
-                            </p>
-                            <a href="mailto:{{ $('On form submission').item.json['Contacts:'] }}" class="inline-block bg-white text-blue-600 px-10 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all">
-                                <span class="lang-en">Send Message</span>
-                                <span class="lang-ar">إرسال رسالة</span>
-                            </a>
+                </div>
+                <div class="lg:w-1/2">
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <input type="text" placeholder="Name" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500">
+                            <input type="email" placeholder="Email" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500">
                         </div>
-                    </div>
+                        <textarea rows="4" placeholder="Your Message" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500"></textarea>
+                        <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition-all">
+                            <span class="lang-en">Send Message</span>
+                            <span class="lang-ar hidden">إرسال الرسالة</span>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-50 py-12 border-t border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-2">
-                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+    <footer class="py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex items-center justify-center gap-2 mb-6">
+                <svg class="h-6 w-6 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                 </svg>
-                <span class="text-slate-900 font-bold">{{ $('On form submission').item.json['Company Name:'] }}</span>
+                <span class="text-xl font-bold text-white">Velox Prime</span>
             </div>
             <p class="text-slate-500 text-sm">
-                &copy; 2023 {{ $('On form submission').item.json['Company Name:'] }}. 
-                <span class="lang-en">All rights reserved.</span>
-                <span class="lang-ar">جميع الحقوق محفوظة.</span>
+                &copy; 2024 Velox Prime. <span class="lang-en">All rights reserved.</span><span class="lang-ar hidden">جميع الحقوق محفوظة.</span>
             </p>
         </div>
     </footer>
@@ -217,17 +230,21 @@
     <script>
         function toggleLanguage() {
             const html = document.documentElement;
-            const currentLang = html.getAttribute('lang');
+            const currentLang = html.lang;
+            const isEn = currentLang === 'en';
             
-            if (currentLang === 'en') {
-                html.setAttribute('lang', 'ar');
-                html.setAttribute('dir', 'rtl');
+            if (isEn) {
+                html.lang = 'ar';
+                html.dir = 'rtl';
+                document.querySelectorAll('.lang-en').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.lang-ar').forEach(el => el.classList.remove('hidden'));
             } else {
-                html.setAttribute('lang', 'en');
-                html.setAttribute('dir', 'ltr');
+                html.lang = 'en';
+                html.dir = 'ltr';
+                document.querySelectorAll('.lang-ar').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.lang-en').forEach(el => el.classList.remove('hidden'));
             }
         }
     </script>
-
 </body>
 </html>
